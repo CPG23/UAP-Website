@@ -5,9 +5,9 @@
   --bg-mid:   #040a0e;
   --bg-card:  #060f0a;
   --sidebar:  #030608;
-  --green:    #39ff14;
-  --green-d:  rgba(57,255,20,0.08);
-  --green-g:  rgba(57,255,20,0.45);
+  --green:    #00d4ff;
+  --green-d:  rgba(0,212,255,0.08);
+  --green-g:  rgba(0,212,255,0.45);
   --purple:   #9d00ff;
   --purple-d: rgba(157,0,255,0.12);
   --red:      #ff0033;
@@ -15,8 +15,8 @@
   --cyan:     #00d4ff;
   --txt:      #6a8888;
   --txt-b:    #aacccc;
-  --border:   rgba(57,255,20,0.13);
-  --border-s: rgba(57,255,20,0.35);
+  --border:   rgba(0,212,255,0.13);
+  --border-s: rgba(0,212,255,0.35);
   --fw:       'Orbitron', monospace;
   --fm:       'Share Tech Mono', monospace;
   --sidebar-w: 240px;
