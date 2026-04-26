@@ -226,7 +226,7 @@ ul { list-style: none; }
   max-width: 1100px;
 }
 
-.hero-text { flex: 1; max-width: 560px; }
+.hero-text { flex: 1; max-width: 560px; position: relative; z-index: 1; }
 
 .stamp {
   font-family: var(--fw);
