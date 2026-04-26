@@ -568,7 +568,7 @@ h1 {
   transform: translate(50%, -50%);
   height: 100vh;
   width: auto;
-  opacity: 0.15;
+  opacity: 0.23;
   z-index: 0;
   pointer-events: none;
   filter: saturate(0.4);
