@@ -323,76 +323,19 @@ h1 {
   animation: bounce 2s ease infinite;
 }
 
-/* ── Logo Banner ── */
-.logo-banner {
-  position: relative; z-index: 2;
-  background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(3,8,6,0.95) 100%);
-  border-bottom: 1px solid var(--border);
-  padding: 1.8rem 2.5rem 0;
-}
-.logo-banner-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-bottom: 1.6rem;
-}
-.logo-icon-wrap { flex-shrink: 0; }
-.logo-ufo-icon  { width: 64px; filter: drop-shadow(0 0 10px rgba(57,255,20,0.6)); animation: ufoFloat 4s ease-in-out infinite; }
-.logo-alien-icon{ width: 48px; filter: drop-shadow(0 0 8px rgba(57,255,20,0.5));  animation: alienSway 5s ease-in-out infinite; }
-.logo-icon-right { opacity: 0.85; }
-
-.logo-text-wrap { text-align: center; }
-.logo-pre {
-  font-family: var(--fw); font-size: 0.5rem; letter-spacing: 4px;
-  color: var(--txt); margin-bottom: 0.5rem;
-}
-.logo-main {
-  font-family: var(--fw); font-weight: 900; line-height: 1;
-  margin-bottom: 0.6rem;
-}
-.logo-uap {
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  color: #fff;
-  text-shadow: 0 0 40px rgba(255,255,255,0.15);
-  letter-spacing: -2px;
-}
-.logo-sep {
-  font-size: clamp(1.6rem, 3.5vw, 3rem);
-  color: var(--green);
-  opacity: 0.5;
-  margin: 0 0.1em;
-}
-.logo-archiv {
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  color: var(--green);
-  text-shadow: 0 0 30px var(--green-g), 0 0 80px rgba(57,255,20,0.2);
-  animation: logoGlow 3s ease-in-out infinite;
-}
-.logo-sub {
-  font-family: var(--fw); font-size: 0.52rem;
-  letter-spacing: 3px; color: var(--txt);
-}
-.logo-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--green), rgba(157,0,255,0.6), var(--green), transparent);
-  opacity: 0.4;
-}
-
 /* ── Ticker ── */
 .ticker-bar {
   background: rgba(57,255,20,0.04);
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 0.6rem 0;
+  padding: 0.65rem 0;
   overflow: hidden;
   position: relative; z-index: 2;
 }
 .ticker-inner {
   display: flex;
   white-space: nowrap;
-  animation: ticker 18s linear infinite;
+  animation: ticker 30s linear infinite;
   font-family: var(--fw);
   font-size: 0.62rem;
   letter-spacing: 1px;
@@ -601,10 +544,6 @@ h1 {
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ── Animations ── */
-@keyframes logoGlow {
-  0%,100% { text-shadow: 0 0 30px var(--green-g), 0 0 80px rgba(57,255,20,0.2); }
-  50%      { text-shadow: 0 0 50px var(--green-g), 0 0 120px rgba(57,255,20,0.35), 0 0 200px rgba(57,255,20,0.1); }
-}
 @keyframes eyePulse {
   0%,100% { border-color: var(--green); box-shadow: 0 0 8px var(--green-g); }
   50%      { border-color: #9d00ff;     box-shadow: 0 0 16px rgba(157,0,255,0.6); }
@@ -645,10 +584,6 @@ h1 {
   .sidebar-close { display: block; }
   .mobile-header { display: flex; }
   .main-wrap { margin-left: 0; padding-top: 56px; }
-  .logo-banner { padding: 1.2rem 1rem 0; }
-  .logo-banner-inner { gap: 1rem; flex-wrap: wrap; }
-  .logo-icon-right { display: none; }
-  .logo-ufo-icon { width: 44px; }
   .hero { padding: 3rem 1.5rem; }
   .section { padding: 4rem 1.5rem; }
   .footer { padding: 2.5rem 1.5rem 1.5rem; }
