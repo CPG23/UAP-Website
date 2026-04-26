@@ -12,7 +12,7 @@
   }
 
   function init() {
-    stars = Array.from({ length: 220 }, () => ({
+    stars = Array.from({ length: 80 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       r: Math.random() * 1.4 + 0.2,
@@ -39,7 +39,7 @@
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       // slight green tint on some stars
-      const tint = Math.random() > .97 ? `rgba(57,255,20,${s.a})` : `rgba(180,210,200,${s.a})`;
+      const tint = Math.random() > .97 ? `rgba(57,255,20,${s.a * 0.5})` : `rgba(180,210,200,${s.a * 0.4})`;
       ctx.fillStyle = tint;
       ctx.fill();
     });
