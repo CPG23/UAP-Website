@@ -1,264 +1,147 @@
-/* ================================================
-   UAP ARCHIV - Main JavaScript
-   ================================================ */
+/* UAP ARCHIV — JS */
 
-// ─── Starfield Canvas ───
+// ── Starfield ──
 (function () {
   const canvas = document.getElementById('starfield');
   const ctx = canvas.getContext('2d');
-  let stars = [];
-  let shootingStars = [];
-  let animFrameId;
+  let stars = [], shooting = [];
 
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
 
-  function initStars(count = 200) {
-    stars = [];
-    for (let i = 0; i < count; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.2,
-        alpha: Math.random(),
-        speed: Math.random() * 0.3 + 0.05,
-        twinkleSpeed: Math.random() * 0.02 + 0.005,
-        twinkleDir: Math.random() > 0.5 ? 1 : -1,
-      });
-    }
+  function init() {
+    stars = Array.from({ length: 220 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.4 + 0.2,
+      a: Math.random(),
+      da: (Math.random() * 0.015 + 0.004) * (Math.random() > .5 ? 1 : -1),
+    }));
   }
 
-  function spawnShootingStar() {
-    if (shootingStars.length < 3) {
-      shootingStars.push({
-        x: Math.random() * canvas.width * 0.7,
-        y: Math.random() * canvas.height * 0.4,
-        len: Math.random() * 120 + 60,
-        speed: Math.random() * 8 + 6,
-        alpha: 1,
-        angle: Math.PI / 4 + (Math.random() * 0.3 - 0.15),
-      });
-    }
+  function spawnShoot() {
+    if (shooting.length < 2) shooting.push({
+      x: Math.random() * canvas.width * .7,
+      y: Math.random() * canvas.height * .35,
+      len: Math.random() * 110 + 50,
+      speed: Math.random() * 9 + 5,
+      a: 1,
+    });
   }
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Stars
     stars.forEach(s => {
-      s.alpha += s.twinkleSpeed * s.twinkleDir;
-      if (s.alpha >= 1) { s.alpha = 1; s.twinkleDir = -1; }
-      if (s.alpha <= 0.1) { s.alpha = 0.1; s.twinkleDir = 1; }
-
+      s.a += s.da;
+      if (s.a >= 1 || s.a <= .08) s.da *= -1;
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(180, 220, 255, ${s.alpha})`;
+      // slight green tint on some stars
+      const tint = Math.random() > .97 ? `rgba(57,255,20,${s.a})` : `rgba(180,210,200,${s.a})`;
+      ctx.fillStyle = tint;
       ctx.fill();
     });
 
-    // Shooting stars
-    shootingStars = shootingStars.filter(ss => ss.alpha > 0);
-    shootingStars.forEach(ss => {
-      const tailX = ss.x - Math.cos(ss.angle) * ss.len;
-      const tailY = ss.y - Math.sin(ss.angle) * ss.len;
-
-      const grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
-      grad.addColorStop(0, `rgba(0, 212, 255, 0)`);
-      grad.addColorStop(1, `rgba(0, 212, 255, ${ss.alpha})`);
-
+    shooting = shooting.filter(s => s.a > 0);
+    shooting.forEach(s => {
+      const tx = s.x - Math.cos(Math.PI / 4) * s.len;
+      const ty = s.y - Math.sin(Math.PI / 4) * s.len;
+      const g = ctx.createLinearGradient(tx, ty, s.x, s.y);
+      g.addColorStop(0, 'rgba(57,255,20,0)');
+      g.addColorStop(1, `rgba(57,255,20,${s.a})`);
       ctx.beginPath();
-      ctx.moveTo(tailX, tailY);
-      ctx.lineTo(ss.x, ss.y);
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      ss.x += Math.cos(ss.angle) * ss.speed;
-      ss.y += Math.sin(ss.angle) * ss.speed;
-      ss.alpha -= 0.015;
+      ctx.moveTo(tx, ty); ctx.lineTo(s.x, s.y);
+      ctx.strokeStyle = g; ctx.lineWidth = 1.5; ctx.stroke();
+      s.x += s.speed; s.y += s.speed; s.a -= 0.018;
     });
-
-    animFrameId = requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
   }
 
-  resize();
-  initStars();
-  draw();
-
-  setInterval(spawnShootingStar, 4000);
-  window.addEventListener('resize', () => { resize(); initStars(); });
+  resize(); init(); draw();
+  setInterval(spawnShoot, 5000);
+  window.addEventListener('resize', () => { resize(); init(); });
 })();
 
 
-// ─── Navbar scroll effect ───
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.style.background = window.scrollY > 50
-    ? 'rgba(4, 8, 16, 0.97)'
-    : 'rgba(4, 8, 16, 0.85)';
-});
+// ── Sidebar toggle ──
+const sidebar  = document.getElementById('sidebar');
+const menuBtn  = document.getElementById('menuToggle');
+const closeBtn = document.getElementById('sidebarClose');
 
-// ─── Mobile nav toggle ───
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.querySelector('.nav-links');
-if (navToggle && navLinks) {
-  navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-}
+menuBtn?.addEventListener('click', () => sidebar.classList.add('open'));
+closeBtn?.addEventListener('click', () => sidebar.classList.remove('open'));
+document.querySelectorAll('.nav-item').forEach(l =>
+  l.addEventListener('click', () => sidebar.classList.remove('open'))
+);
 
 
-// ─── Animated counters ───
-function animateCounter(el, target, duration = 2000) {
-  const start = performance.now();
-  const update = (time) => {
-    const elapsed = time - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target).toLocaleString('de-DE');
-    if (progress < 1) requestAnimationFrame(update);
-    else el.textContent = target.toLocaleString('de-DE');
-  };
-  requestAnimationFrame(update);
-}
-
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.target, 10);
-      animateCounter(el, target);
-      counterObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
-
-
-// ─── Scroll Reveal ───
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      entry.target.style.transitionDelay = `${i * 0.08}s`;
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll(
-  '.about-card, .case-card, .timeline-item, .info-box, .counter-box'
-).forEach(el => {
-  el.classList.add('reveal');
-  revealObserver.observe(el);
-});
-
-
-// ─── Progress bars animate on scroll ───
-const progObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.prog-fill').forEach(bar => {
-        const w = bar.style.width;
-        bar.style.width = '0';
-        setTimeout(() => { bar.style.width = w; }, 100);
-      });
-      progObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.3 });
-
-const evidencePanel = document.querySelector('.evidence-panel');
-if (evidencePanel) progObserver.observe(evidencePanel);
-
-
-// ─── Report Form ───
-const reportForm = document.getElementById('reportForm');
-const toast = document.getElementById('toast');
-const toastMsg = document.getElementById('toastMsg');
-let toastTimer;
-
-function showToast(msg, color = '#00ff88') {
-  clearTimeout(toastTimer);
-  toast.style.borderColor = color;
-  toast.style.color = color;
-  toastMsg.textContent = msg;
-  toast.classList.add('show');
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
-}
-
-if (reportForm) {
-  reportForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const location = document.getElementById('location').value.trim();
-    const description = document.getElementById('description').value.trim();
-    const date = document.getElementById('date').value;
-
-    if (!location || !description || !date) {
-      showToast('Bitte Ort, Datum und Beschreibung ausfüllen.', '#ff3355');
-      return;
-    }
-
-    const btn = reportForm.querySelector('button[type="submit"]');
-    const orig = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<span>&#9654;</span> Wird übermittelt...';
-
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.innerHTML = orig;
-      reportForm.reset();
-      showToast('Bericht erfolgreich übermittelt! Vielen Dank.');
-
-      const counter = document.querySelector('.counter-num');
-      if (counter) {
-        const cur = parseInt(counter.textContent, 10);
-        counter.textContent = cur + 1;
-        counter.style.animation = 'none';
-        counter.offsetHeight;
-        counter.style.animation = '';
-      }
-    }, 1800);
-  });
-}
-
-
-// ─── Glitch effect on logo ───
-const logo = document.querySelector('.nav-logo');
-if (logo) {
-  setInterval(() => {
-    logo.style.textShadow = '2px 0 #ff3355, -2px 0 #00d4ff';
-    setTimeout(() => { logo.style.textShadow = ''; }, 80);
-  }, 6000);
-}
-
-
-// ─── Active nav link on scroll ───
-const sections = document.querySelectorAll('section[id]');
-const navAnchorLinks = document.querySelectorAll('.nav-links a');
+// ── Active nav on scroll ──
+const secs = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-item');
 
 window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(sec => {
-    const top = sec.offsetTop - 100;
-    if (window.scrollY >= top) current = sec.id;
-  });
-  navAnchorLinks.forEach(link => {
-    link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === `#${cur}`);
   });
 }, { passive: true });
 
 
-// ─── Ticker duplication for seamless loop ───
-(function () {
-  const ticker = document.querySelector('.ticker');
-  if (!ticker) return;
-  ticker.innerHTML += ticker.innerHTML;
-})();
+// ── Counter animation ──
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = +el.dataset.target;
+    const start = performance.now();
+    const dur = 2000;
+    const tick = now => {
+      const p = Math.min((now - start) / dur, 1);
+      const v = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+      el.textContent = v.toLocaleString('de-DE');
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target.toLocaleString('de-DE');
+    };
+    requestAnimationFrame(tick);
+    counterObs.unobserve(el);
+  });
+}, { threshold: .5 });
+
+document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el));
+
+
+// ── Scroll reveal ──
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (!e.isIntersecting) return;
+    e.target.style.transitionDelay = `${i * 0.07}s`;
+    e.target.classList.add('visible');
+    revealObs.unobserve(e.target);
+  });
+}, { threshold: .1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+
+// ── Progress bars animate on scroll ──
+const progObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.fill').forEach(f => {
+      const w = f.style.width; f.style.width = '0';
+      setTimeout(() => { f.style.width = w; }, 100);
+    });
+    progObs.unobserve(e.target);
+  });
+}, { threshold: .3 });
+
+const term = document.querySelector('.terminal');
+if (term) progObs.observe(term);
+
+
+// ── Ticker duplicate for seamless loop ──
+const ticker = document.querySelector('.ticker-inner');
+if (ticker) ticker.innerHTML += ticker.innerHTML;
