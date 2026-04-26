@@ -12,6 +12,45 @@
   <canvas id="starfield"></canvas>
   <div class="scanlines"></div>
 
+  <!-- Grey Alien Background -->
+  <svg class="alien-bg" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
+    <!-- Head -->
+    <ellipse cx="200" cy="170" rx="130" ry="155" fill="#39ff14"/>
+    <!-- Eye sockets -->
+    <ellipse cx="148" cy="168" rx="52" ry="38" fill="#020407" transform="rotate(-18,148,168)"/>
+    <ellipse cx="252" cy="168" rx="52" ry="38" fill="#020407" transform="rotate(18,252,168)"/>
+    <!-- Nose slits -->
+    <ellipse cx="190" cy="270" rx="7" ry="12" fill="#020407" opacity="0.6"/>
+    <ellipse cx="210" cy="270" rx="7" ry="12" fill="#020407" opacity="0.6"/>
+    <!-- Mouth -->
+    <path d="M155 305 Q200 318 245 305" stroke="#020407" stroke-width="4" fill="none"/>
+    <!-- Neck -->
+    <rect x="177" y="318" width="46" height="55" rx="10" fill="#39ff14"/>
+    <!-- Body -->
+    <path d="M100 373 Q130 360 200 368 Q270 360 300 373 L292 540 Q200 558 108 540 Z" fill="#39ff14"/>
+    <!-- Left arm -->
+    <path d="M105 385 Q55 435 38 510" stroke="#39ff14" stroke-width="28" stroke-linecap="round" fill="none"/>
+    <!-- Right arm -->
+    <path d="M295 385 Q345 435 362 510" stroke="#39ff14" stroke-width="28" stroke-linecap="round" fill="none"/>
+    <!-- Left hand (3 fingers) -->
+    <circle cx="38" cy="510" r="16" fill="#39ff14"/>
+    <line x1="38" y1="510" x2="10" y2="548" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
+    <line x1="38" y1="510" x2="38" y2="555" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
+    <line x1="38" y1="510" x2="66" y2="548" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
+    <!-- Right hand (3 fingers) -->
+    <circle cx="362" cy="510" r="16" fill="#39ff14"/>
+    <line x1="362" y1="510" x2="334" y2="548" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
+    <line x1="362" y1="510" x2="362" y2="555" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
+    <line x1="362" y1="510" x2="390" y2="548" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
+    <!-- Left leg -->
+    <path d="M150 540 Q140 610 128 660" stroke="#39ff14" stroke-width="28" stroke-linecap="round" fill="none"/>
+    <!-- Right leg -->
+    <path d="M250 540 Q260 610 272 660" stroke="#39ff14" stroke-width="28" stroke-linecap="round" fill="none"/>
+    <!-- Feet -->
+    <ellipse cx="128" cy="668" rx="28" ry="14" fill="#39ff14"/>
+    <ellipse cx="272" cy="668" rx="28" ry="14" fill="#39ff14"/>
+  </svg>
+
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">

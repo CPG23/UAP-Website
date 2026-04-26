@@ -70,7 +70,7 @@ const sidebar  = document.getElementById('sidebar');
 const menuBtn  = document.getElementById('menuToggle');
 const closeBtn = document.getElementById('sidebarClose');
 
-menuBtn?.addEventListener('click', () => sidebar.classList.add('open'));
+menuBtn?.addEventListener('click', () => sidebar.classList.toggle('open'));
 closeBtn?.addEventListener('click', () => sidebar.classList.remove('open'));
 document.querySelectorAll('.nav-item').forEach(l =>
   l.addEventListener('click', () => sidebar.classList.remove('open'))
