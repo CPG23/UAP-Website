@@ -339,12 +339,24 @@ h1 {
 .ticker-inner {
   display: flex;
   white-space: nowrap;
-  animation: ticker 12s linear infinite;
+  animation: ticker 25s linear infinite;
   font-family: var(--fw);
   font-size: 0.62rem;
   letter-spacing: 1px;
   color: var(--green);
 }
+.tick-link {
+  color: var(--green);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.tick-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.tick-sep { color: var(--green); }
 
 /* ── Sections ── */
 .section { padding: 6rem 3rem; position: relative; z-index: 2; }
@@ -591,6 +603,7 @@ h1 {
   .mobile-header { display: flex; }
   .main-wrap { margin-left: 0; padding-top: calc(56px + 32px); }
   .ticker-bar { left: 0; top: 56px; }
+  .ticker-inner { animation-duration: 35s; }
   .hero { padding: 0 1.5rem 2rem; }
   .section { padding: 4rem 1.5rem; }
   .footer { padding: 2.5rem 1.5rem 1.5rem; }
