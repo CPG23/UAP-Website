@@ -563,13 +563,13 @@ h1 {
 /* ── Alien background ── */
 .alien-bg {
   position: fixed;
-  right: -80px;
-  bottom: -40px;
-  width: min(600px, 80vw);
-  opacity: 0.04;
+  right: -30px;
+  bottom: -20px;
+  width: min(340px, 45vw);
+  opacity: 0.07;
   z-index: 0;
   pointer-events: none;
-  filter: drop-shadow(0 0 40px rgba(57,255,20,0.5));
+  filter: drop-shadow(0 0 20px rgba(57,255,20,0.15));
 }
 
 /* ── Responsive ── */

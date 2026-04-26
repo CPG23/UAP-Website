@@ -12,43 +12,96 @@
   <canvas id="starfield"></canvas>
   <div class="scanlines"></div>
 
-  <!-- Grey Alien Background -->
-  <svg class="alien-bg" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
-    <!-- Head -->
-    <ellipse cx="200" cy="170" rx="130" ry="155" fill="#39ff14"/>
-    <!-- Eye sockets -->
-    <ellipse cx="148" cy="168" rx="52" ry="38" fill="#020407" transform="rotate(-18,148,168)"/>
-    <ellipse cx="252" cy="168" rx="52" ry="38" fill="#020407" transform="rotate(18,252,168)"/>
-    <!-- Nose slits -->
-    <ellipse cx="190" cy="270" rx="7" ry="12" fill="#020407" opacity="0.6"/>
-    <ellipse cx="210" cy="270" rx="7" ry="12" fill="#020407" opacity="0.6"/>
-    <!-- Mouth -->
-    <path d="M155 305 Q200 318 245 305" stroke="#020407" stroke-width="4" fill="none"/>
+  <!-- Grey Alien Background (realistic, subtle) -->
+  <svg class="alien-bg" viewBox="0 0 320 560" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="hg" cx="38%" cy="32%" r="65%">
+        <stop offset="0%" stop-color="#9aaa9a"/>
+        <stop offset="55%" stop-color="#556655"/>
+        <stop offset="100%" stop-color="#1a221a"/>
+      </radialGradient>
+      <radialGradient id="bg2" cx="40%" cy="28%" r="62%">
+        <stop offset="0%" stop-color="#778877"/>
+        <stop offset="100%" stop-color="#223322"/>
+      </radialGradient>
+      <radialGradient id="eg" cx="30%" cy="25%" r="70%">
+        <stop offset="0%" stop-color="#0d120d"/>
+        <stop offset="100%" stop-color="#020402"/>
+      </radialGradient>
+      <radialGradient id="er" cx="28%" cy="22%" r="45%">
+        <stop offset="0%" stop-color="rgba(180,220,180,0.35)"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </radialGradient>
+      <radialGradient id="ag" cx="40%" cy="30%" r="60%">
+        <stop offset="0%" stop-color="#778877"/>
+        <stop offset="100%" stop-color="#1a221a"/>
+      </radialGradient>
+      <filter id="soft"><feGaussianBlur stdDeviation="1.5"/></filter>
+    </defs>
+
+    <!-- Neck shadow -->
+    <ellipse cx="160" cy="298" rx="22" ry="8" fill="#0a100a" filter="url(#soft)"/>
     <!-- Neck -->
-    <rect x="177" y="318" width="46" height="55" rx="10" fill="#39ff14"/>
+    <path d="M142 272 C140 285 140 295 142 305 L178 305 C180 295 180 285 178 272 Z" fill="url(#ag)"/>
+
     <!-- Body -->
-    <path d="M100 373 Q130 360 200 368 Q270 360 300 373 L292 540 Q200 558 108 540 Z" fill="#39ff14"/>
-    <!-- Left arm -->
-    <path d="M105 385 Q55 435 38 510" stroke="#39ff14" stroke-width="28" stroke-linecap="round" fill="none"/>
+    <ellipse cx="160" cy="390" rx="58" ry="72" fill="url(#bg2)"/>
+    <!-- Body shadow/depth -->
+    <ellipse cx="170" cy="410" rx="30" ry="40" fill="rgba(0,0,0,0.18)" filter="url(#soft)"/>
+
+    <!-- Left arm — long, thin, curved -->
+    <path d="M108 340 Q72 390 52 460" stroke="#556655" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <path d="M108 340 Q72 390 52 460" stroke="#778877" stroke-width="10" stroke-linecap="round" fill="none"/>
     <!-- Right arm -->
-    <path d="M295 385 Q345 435 362 510" stroke="#39ff14" stroke-width="28" stroke-linecap="round" fill="none"/>
-    <!-- Left hand (3 fingers) -->
-    <circle cx="38" cy="510" r="16" fill="#39ff14"/>
-    <line x1="38" y1="510" x2="10" y2="548" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
-    <line x1="38" y1="510" x2="38" y2="555" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
-    <line x1="38" y1="510" x2="66" y2="548" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
-    <!-- Right hand (3 fingers) -->
-    <circle cx="362" cy="510" r="16" fill="#39ff14"/>
-    <line x1="362" y1="510" x2="334" y2="548" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
-    <line x1="362" y1="510" x2="362" y2="555" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
-    <line x1="362" y1="510" x2="390" y2="548" stroke="#39ff14" stroke-width="14" stroke-linecap="round"/>
-    <!-- Left leg -->
-    <path d="M150 540 Q140 610 128 660" stroke="#39ff14" stroke-width="28" stroke-linecap="round" fill="none"/>
-    <!-- Right leg -->
-    <path d="M250 540 Q260 610 272 660" stroke="#39ff14" stroke-width="28" stroke-linecap="round" fill="none"/>
+    <path d="M212 340 Q248 390 268 460" stroke="#556655" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <path d="M212 340 Q248 390 268 460" stroke="#778877" stroke-width="10" stroke-linecap="round" fill="none"/>
+
+    <!-- Left hand — 4 long fingers -->
+    <path d="M52 460 L30 490" stroke="#667766" stroke-width="7" stroke-linecap="round"/>
+    <path d="M52 460 L44 495" stroke="#667766" stroke-width="7" stroke-linecap="round"/>
+    <path d="M52 460 L58 494" stroke="#667766" stroke-width="7" stroke-linecap="round"/>
+    <path d="M52 460 L70 485" stroke="#667766" stroke-width="7" stroke-linecap="round"/>
+    <!-- Right hand -->
+    <path d="M268 460 L290 490" stroke="#667766" stroke-width="7" stroke-linecap="round"/>
+    <path d="M268 460 L276 495" stroke="#667766" stroke-width="7" stroke-linecap="round"/>
+    <path d="M268 460 L262 494" stroke="#667766" stroke-width="7" stroke-linecap="round"/>
+    <path d="M268 460 L250 485" stroke="#667766" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Legs -->
+    <path d="M130 455 Q122 505 116 545" stroke="#556655" stroke-width="22" stroke-linecap="round" fill="none"/>
+    <path d="M190 455 Q198 505 204 545" stroke="#556655" stroke-width="22" stroke-linecap="round" fill="none"/>
     <!-- Feet -->
-    <ellipse cx="128" cy="668" rx="28" ry="14" fill="#39ff14"/>
-    <ellipse cx="272" cy="668" rx="28" ry="14" fill="#39ff14"/>
+    <ellipse cx="112" cy="548" rx="24" ry="10" fill="#445544"/>
+    <ellipse cx="208" cy="548" rx="24" ry="10" fill="#445544"/>
+
+    <!-- Head — large elongated cranium, wider at top -->
+    <path d="M60 180 C58 100 100 40 160 38 C220 40 262 100 260 180 C260 245 230 272 160 275 C90 272 60 245 60 180 Z" fill="url(#hg)"/>
+    <!-- Head highlight -->
+    <ellipse cx="130" cy="95" rx="45" ry="35" fill="rgba(180,210,180,0.08)" filter="url(#soft)"/>
+    <!-- Head shadow bottom -->
+    <ellipse cx="160" cy="265" rx="60" ry="15" fill="rgba(0,0,0,0.25)" filter="url(#soft)"/>
+
+    <!-- Left eye socket — large wrap-around almond -->
+    <path d="M72 168 C78 138 102 125 130 132 C152 138 160 158 154 178 C148 196 124 205 100 198 C78 190 68 188 72 168 Z" fill="url(#eg)"/>
+    <!-- Right eye socket -->
+    <path d="M248 168 C242 138 218 125 190 132 C168 138 160 158 166 178 C172 196 196 205 220 198 C242 190 252 188 248 168 Z" fill="url(#eg)"/>
+    <!-- Eye reflections — subtle highlights -->
+    <ellipse cx="100" cy="155" rx="18" ry="11" fill="url(#er)" filter="url(#soft)"/>
+    <ellipse cx="220" cy="155" rx="18" ry="11" fill="url(#er)" filter="url(#soft)"/>
+    <!-- Tiny iris glints -->
+    <ellipse cx="95" cy="152" rx="5" ry="3" fill="rgba(200,230,200,0.2)"/>
+    <ellipse cx="215" cy="152" rx="5" ry="3" fill="rgba(200,230,200,0.2)"/>
+
+    <!-- Nose — two tiny vertical slits -->
+    <ellipse cx="153" cy="228" rx="4" ry="7" fill="rgba(0,0,0,0.45)"/>
+    <ellipse cx="167" cy="228" rx="4" ry="7" fill="rgba(0,0,0,0.45)"/>
+
+    <!-- Mouth — thin, barely visible -->
+    <path d="M133 248 Q160 254 187 248" stroke="rgba(30,50,30,0.7)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Ears — small ridges -->
+    <path d="M62 175 C48 168 46 185 62 192" stroke="#667766" stroke-width="4" fill="none"/>
+    <path d="M258 175 C272 168 274 185 258 192" stroke="#667766" stroke-width="4" fill="none"/>
   </svg>
 
   <!-- SIDEBAR -->
