@@ -142,6 +142,4 @@ const term = document.querySelector('.terminal');
 if (term) progObs.observe(term);
 
 
-// ── Ticker duplicate for seamless loop ──
-const ticker = document.querySelector('.ticker-inner');
-if (ticker) ticker.innerHTML += ticker.innerHTML;
+// Ticker content is already duplicated in HTML for seamless loop
