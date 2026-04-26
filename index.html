@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UAP-Archiv | Unidentifizierte Luftphänomene</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Starfield Canvas -->
+  <canvas id="starfield"></canvas>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">&#9650;</span>
+        <span>UAP<span class="accent">ARCHIV</span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Start</a></li>
+        <li><a href="#about">Was sind UAPs?</a></li>
+        <li><a href="#cases">Fälle</a></li>
+        <li><a href="#evidence">Beweise</a></li>
+        <li><a href="#report">Melden</a></li>
+      </ul>
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span>LIVE MONITORING</span>
+      </div>
+      <button class="nav-toggle" id="navToggle">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="classified-banner">&#9632; CLASSIFIED &#9632;</div>
+      <h1 class="hero-title">
+        <span class="title-line">SIE SIND</span>
+        <span class="title-line accent-glow">NICHT ALLEIN</span>
+      </h1>
+      <p class="hero-sub">
+        Dokumentierte UAP-Sichtungen. Regierungsberichte. Zeugenaussagen.<br />
+        Die Wahrheit liegt jenseits unseres Verständnisses.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="12890">0</span>
+          <span class="stat-label">Gemeldete Sichtungen</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="143">0</span>
+          <span class="stat-label">Länder betroffen</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="71">0</span>
+          <span class="stat-label">Jahre Dokumentation</span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#cases" class="btn btn-primary">Fälle erkunden</a>
+        <a href="#report" class="btn btn-outline">Sichtung melden</a>
+      </div>
+    </div>
+    <div class="hero-ufo">
+      <div class="ufo-container">
+        <div class="ufo-body">
+          <div class="ufo-dome"></div>
+          <div class="ufo-disc">
+            <div class="ufo-lights">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="ufo-beam"></div>
+        </div>
+        <div class="ufo-glow"></div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scrollen</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>&#9670; NEUESTE MELDUNG: UAP über dem Atlantik gesichtet &nbsp;&nbsp;</span>
+      <span>&#9670; Pentagon bestätigt neue Untersuchungen &nbsp;&nbsp;</span>
+      <span>&#9670; Whistleblower: Außerirdische Technologie existiert &nbsp;&nbsp;</span>
+      <span>&#9670; NASA startet UAP-Forschungsprogramm 2025 &nbsp;&nbsp;</span>
+      <span>&#9670; Militärpiloten berichten von Begegnungen &nbsp;&nbsp;</span>
+      <span>&#9670; Neue Dokumente per FOIA freigegeben &nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">GRUNDLAGEN</span>
+        <h2>Was sind <span class="accent">UAPs</span>?</h2>
+        <p>Unidentifizierte Luft- und Raumphänomene (UAP) – früher UFOs genannt – sind Beobachtungen am Himmel, die mit bekannter Technologie oder Naturphänomenen nicht erklärt werden können.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="card-icon">&#9654;</div>
+          <h3>Außergewöhnliche Geschwindigkeit</h3>
+          <p>Dokumentierte UAPs zeigen Geschwindigkeiten von über 20.000 km/h – ohne erkennbaren Antrieb oder Hitzesignaturen.</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">&#8853;</div>
+          <h3>Sofortige Richtungsänderung</h3>
+          <p>Abrupte 90°-Kurven bei Hyperschallgeschwindigkeit – physikalisch unmöglich für bekannte menschliche Flugkörper.</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">&#11835;</div>
+          <h3>Schwebefähigkeit</h3>
+          <p>Stationäre Schwebepositionen bei starkem Wind, ohne sichtbare Rotorblätter oder Düsenantrieb.</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">&#9675;</div>
+          <h3>Transmediales Verhalten</h3>
+          <p>Beobachtungen zeigen nahtlose Übergänge zwischen Luft, Wasser und dem erdnahen Weltraum.</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">&#10022;</div>
+          <h3>Keine Infrarotsignatur</h3>
+          <p>Trotz extremer Manöver zeigen UAPs keine Wärmeabgabe – ein Widerspruch zu allen bekannten Antriebssystemen.</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">&#8644;</div>
+          <h3>Stealth-Eigenschaften</h3>
+          <p>Viele Objekte sind auf Radar sichtbar, für das menschliche Auge jedoch unsichtbar – oder umgekehrt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases Section -->
+  <section id="cases" class="section cases">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">DOKUMENTIERT</span>
+        <h2>Bekannteste <span class="accent">Fälle</span></h2>
+        <p>Aus Tausenden von Berichten stechen diese Fälle durch ihre Glaubwürdigkeit und die Qualität der Beweise hervor.</p>
+      </div>
+      <div class="cases-grid">
+
+        <article class="case-card" data-level="TOP SECRET">
+          <div class="case-header">
+            <span class="case-year">1947</span>
+            <span class="case-badge top-secret">TOP SECRET</span>
+          </div>
+          <div class="case-body">
+            <h3>Roswell, New Mexico</h3>
+            <p>Ein Objekt unbekannter Herkunft stürzte auf einer Ranch ab. Die US Air Force sprach zunächst von einem "fliegenden Teller", korrigierte sich dann zu einem Wetterballon. Augenzeugen berichten von nicht-menschlichen Körpern.</p>
+            <div class="case-tags">
+              <span>Absturz</span>
+              <span>Militär</span>
+              <span>Bergung</span>
+            </div>
+          </div>
+          <div class="case-footer">
+            <span class="case-status verified">Offiziell dokumentiert</span>
+          </div>
+        </article>
+
+        <article class="case-card" data-level="CONFIDENTIAL">
+          <div class="case-header">
+            <span class="case-year">1980</span>
+            <span class="case-badge confidential">CONFIDENTIAL</span>
+          </div>
+          <div class="case-body">
+            <h3>Rendlesham Forest, England</h3>
+            <p>US-Militärpersonal auf dem NATO-Stützpunkt RAF Bentwaters beobachtet über mehrere Nächte ein dreieckiges, leuchtendes Objekt im Wald. Strahlungsmessungen, Landespuren und schriftliche Berichte belegen den Vorfall.</p>
+            <div class="case-tags">
+              <span>Militärpersonal</span>
+              <span>Mehrere Nächte</span>
+              <span>Strahlung</span>
+            </div>
+          </div>
+          <div class="case-footer">
+            <span class="case-status verified">Offizieller Militärbericht</span>
+          </div>
+        </article>
+
+        <article class="case-card" data-level="UNCLASSIFIED">
+          <div class="case-header">
+            <span class="case-year">2004</span>
+            <span class="case-badge unclassified">DECLASSIFIED</span>
+          </div>
+          <div class="case-body">
+            <h3>USS Nimitz, Pazifik</h3>
+            <p>Kampfpiloten der US Navy filmen ein "Tic-Tac"-förmiges Objekt, das Hyperschall-Manöver ausführt. Das Pentagon veröffentlichte 2020 offiziell das Video. Das Objekt operierte über 10 Stunden im selben Gebiet.</p>
+            <div class="case-tags">
+              <span>US Navy</span>
+              <span>Radar</span>
+              <span>Video</span>
+            </div>
+          </div>
+          <div class="case-footer">
+            <span class="case-status verified">Pentagon bestätigt</span>
+          </div>
+        </article>
+
+        <article class="case-card" data-level="CONFIDENTIAL">
+          <div class="case-header">
+            <span class="case-year">2006</span>
+            <span class="case-badge confidential">CONFIDENTIAL</span>
+          </div>
+          <div class="case-body">
+            <h3>O'Hare International Airport, Chicago</h3>
+            <p>Dutzende United Airlines-Mitarbeiter und Piloten beobachten ein kreisförmiges Objekt, das über dem Gate C17 schwebte. Es schoss senkrecht durch die Wolken und hinterließ ein kreisrundes Loch. Die FAA lehnte eine Untersuchung ab.</p>
+            <div class="case-tags">
+              <span>Flughafen</span>
+              <span>Dutzende Zeugen</span>
+              <span>Piloten</span>
+            </div>
+          </div>
+          <div class="case-footer">
+            <span class="case-status investigated">Untersuchung verweigert</span>
+          </div>
+        </article>
+
+        <article class="case-card" data-level="TOP SECRET">
+          <div class="case-header">
+            <span class="case-year">2019</span>
+            <span class="case-badge top-secret">TOP SECRET</span>
+          </div>
+          <div class="case-body">
+            <h3>USS Russell & Theodore Roosevelt</h3>
+            <p>Mehrere US Navy Schiffe verfolgen über Wochen kugelförmige UAPs. Drohnenschwärme mit unbekannter Technologie nähern sich Kriegsschiffen. Das Verteidigungsministerium bestätigt den Vorfall und leitet eine Task Force ein.</p>
+            <div class="case-tags">
+              <span>US Navy</span>
+              <span>Kriegsschiffe</span>
+              <span>Schwärme</span>
+            </div>
+          </div>
+          <div class="case-footer">
+            <span class="case-status verified">DoD Task Force</span>
+          </div>
+        </article>
+
+        <article class="case-card" data-level="CLASSIFIED">
+          <div class="case-header">
+            <span class="case-year">2023</span>
+            <span class="case-badge classified">CLASSIFIED</span>
+          </div>
+          <div class="case-body">
+            <h3>Kongress-Anhörung: David Grusch</h3>
+            <p>Ehemaliger US-Geheimdienstoffizier David Grusch schwört unter Eid vor dem US-Kongress, dass die Regierung außerirdische Fahrzeuge und "nicht-menschliches biologisches Material" in Besitz hat. Mehrere Mitwisser bestätigen seine Aussagen.</p>
+            <div class="case-tags">
+              <span>Whistleblower</span>
+              <span>US-Kongress</span>
+              <span>Eid</span>
+            </div>
+          </div>
+          <div class="case-footer">
+            <span class="case-status critical">Kongress-Anhörung</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Evidence Section -->
+  <section id="evidence" class="section evidence">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">FAKTEN</span>
+        <h2>Die <span class="accent">Beweise</span></h2>
+      </div>
+      <div class="evidence-layout">
+        <div class="evidence-timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1952</span>
+              <h4>Operation Bluebook</h4>
+              <p>Die US Air Force untersucht 12.618 UAP-Berichte. 701 bleiben offiziell "unerklärt".</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">1997</span>
+              <h4>Phoenix Lights</h4>
+              <p>Tausende Zeugen in Arizona, darunter der Gouverneur, beobachten ein riesiges V-förmiges Objekt.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2017</span>
+              <h4>AATIP-Enthüllung</h4>
+              <p>Die New York Times enthüllt ein geheimes Pentagon-UAP-Programm (AATIP) mit einem Budget von 22 Millionen USD.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2020</span>
+              <h4>Pentagon-Videos</h4>
+              <p>Drei offizielle Navy-Videos werden veröffentlicht: "FLIR1", "Gimbal" und "GoFast".</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2021</span>
+              <h4>UAP Task Force Report</h4>
+              <p>Offizieller US-Regierungsbericht: 144 UAP-Vorfälle analysiert, 143 bleiben ungeklärt.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2024</span>
+              <h4>AARO Jahresbericht</h4>
+              <p>Das Pentagon-UAP-Büro veröffentlicht Bericht mit über 800 neuen Vorfällen – Tendenz steigend.</p>
+            </div>
+          </div>
+        </div>
+        <div class="evidence-panel">
+          <div class="panel-header">
+            <span>&#9650; ANALYSE-TERMINAL</span>
+          </div>
+          <div class="panel-content">
+            <div class="data-row">
+              <span class="data-label">KLASSIFIZIERUNGSSTUFE</span>
+              <span class="data-value blink">TOP SECRET // SCI</span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">ANALYSIERTE VORFÄLLE</span>
+              <span class="data-value">12.890</span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">UNGEKLÄRTE FÄLLE</span>
+              <span class="data-value critical">6.234 (48,4%)</span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">AKTIVE PROGRAMME</span>
+              <span class="data-value">AARO / UAPF / ODNI</span>
+            </div>
+            <div class="data-row">
+              <span class="data-label">LETZTE AKTUALISIERUNG</span>
+              <span class="data-value">26.04.2026</span>
+            </div>
+            <div class="progress-bars">
+              <div class="prog-item">
+                <span>Luftfahrt</span>
+                <div class="prog-bar"><div class="prog-fill" style="width:42%"></div></div>
+                <span>42%</span>
+              </div>
+              <div class="prog-item">
+                <span>Marine</span>
+                <div class="prog-bar"><div class="prog-fill" style="width:28%"></div></div>
+                <span>28%</span>
+              </div>
+              <div class="prog-item">
+                <span>Militär</span>
+                <div class="prog-bar"><div class="prog-fill" style="width:19%"></div></div>
+                <span>19%</span>
+              </div>
+              <div class="prog-item">
+                <span>Zivil</span>
+                <div class="prog-bar"><div class="prog-fill" style="width:11%"></div></div>
+                <span>11%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Report Section -->
+  <section id="report" class="section report">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">MITMACHEN</span>
+        <h2>Sichtung <span class="accent">melden</span></h2>
+        <p>Haben Sie etwas Unerklärliches gesehen? Ihr Bericht könnte entscheidend sein. Alle Angaben werden verschlüsselt übertragen.</p>
+      </div>
+      <div class="report-layout">
+        <form class="report-form" id="reportForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Vorname</label>
+              <input type="text" id="fname" placeholder="Anonym möglich" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Nachname</label>
+              <input type="text" id="lname" placeholder="Optional" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Datum der Sichtung</label>
+              <input type="date" id="date" />
+            </div>
+            <div class="form-group">
+              <label for="time">Uhrzeit (ca.)</label>
+              <input type="time" id="time" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="location">Ort der Sichtung</label>
+            <input type="text" id="location" placeholder="Stadt, Land oder GPS-Koordinaten" />
+          </div>
+          <div class="form-group">
+            <label for="shape">Form des Objekts</label>
+            <select id="shape">
+              <option value="">-- Auswählen --</option>
+              <option>Kreisförmig / Scheibe</option>
+              <option>Dreieckig</option>
+              <option>Zylindrisch / Tic-Tac</option>
+              <option>V-förmig / Boomerang</option>
+              <option>Kugelförmig</option>
+              <option>Unregelmäßig</option>
+              <option>Lichter ohne erkennbare Form</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">Beschreibung</label>
+            <textarea id="description" rows="5" placeholder="Beschreiben Sie so detailliert wie möglich: Farben, Bewegung, Geräusche, Dauer, weitere Zeugen..."></textarea>
+          </div>
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="witness" />
+              <span class="checkmark"></span>
+              Es gab weitere Zeugen
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="media" />
+              <span class="checkmark"></span>
+              Foto / Video vorhanden
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="radar" />
+              <span class="checkmark"></span>
+              Radardaten bekannt
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <span>&#9654;</span> Bericht sicher übermitteln
+          </button>
+          <p class="form-note">&#128274; Ende-zu-Ende-verschlüsselt · Anonymisierung möglich · DSGVO-konform</p>
+        </form>
+        <div class="report-info">
+          <div class="info-box">
+            <h4>&#9888; Was Sie wissen sollten</h4>
+            <ul>
+              <li>Jeder Bericht wird von unserem Team gesichtet</li>
+              <li>Qualitativ hochwertige Fälle werden weitergeleitet</li>
+              <li>Anonymität wird auf Wunsch garantiert</li>
+              <li>Ihr Bericht hilft der Forschung</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>&#128222; Hotlines</h4>
+            <ul>
+              <li>NUFORC (USA): nuforc.org</li>
+              <li>MUFON: mufon.com</li>
+              <li>CENAP (DE): cenap.de</li>
+              <li>Pentagon AARO: aaro.mil</li>
+            </ul>
+          </div>
+          <div class="counter-box">
+            <span class="counter-num">3</span>
+            <span class="counter-label">Neue Berichte<br/>in den letzten 24h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="logo-icon">&#9650;</span>
+            <span>UAP<span class="accent">ARCHIV</span></span>
+          </div>
+          <p>Das unabhängige Archiv für dokumentierte UAP-Vorfälle. Für Transparenz, Wissenschaft und die Suche nach der Wahrheit.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="#home">Startseite</a></li>
+            <li><a href="#about">Was sind UAPs?</a></li>
+            <li><a href="#cases">Bekannte Fälle</a></li>
+            <li><a href="#evidence">Beweise</a></li>
+            <li><a href="#report">Sichtung melden</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Ressourcen</h5>
+          <ul>
+            <li><a href="#">Pentagon AARO</a></li>
+            <li><a href="#">NASA UAP-Studie</a></li>
+            <li><a href="#">FOIA-Dokumente</a></li>
+            <li><a href="#">Kongress-Anhörungen</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h5>Updates erhalten</h5>
+          <p>Neue Fälle und Berichte direkt in Ihr Postfach.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="ihre@email.de" />
+            <button class="btn btn-primary">&#9654;</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 UAP-Archiv · Alle Informationen basieren auf öffentlich zugänglichen Quellen · Kein Regierungsbezug</p>
+        <p class="footer-tag">THE TRUTH IS OUT THERE</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">&#10003;</span>
+    <span id="toastMsg">Bericht erfolgreich übermittelt!</span>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
