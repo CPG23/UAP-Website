@@ -142,4 +142,24 @@ const term = document.querySelector('.terminal');
 if (term) progObs.observe(term);
 
 
-// Ticker content is already duplicated in HTML for seamless loop
+// ── Ticker: exakte Breite berechnen für nahtlosen Loop ──
+(function () {
+  const inner = document.querySelector('.ticker-inner');
+  if (!inner) return;
+  // Warten bis gerendert, dann exakte Breite einer Kopie messen
+  requestAnimationFrame(() => {
+    const oneWidth = inner.scrollWidth / 2;
+    inner.style.setProperty('--ticker-w', oneWidth + 'px');
+  });
+})();
+
+
+// ── Smooth Scroll ohne Hash in URL (verhindert Auto-Scroll beim Seitenstart) ──
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
