@@ -356,6 +356,10 @@ h1 {
   color: #fff;
   text-decoration: underline;
 }
+.ticker-bar:hover .ticker-inner,
+.ticker-bar:active .ticker-inner {
+  animation-play-state: paused;
+}
 .tick-sep { color: var(--green); }
 
 /* ── Sections ── */
@@ -603,7 +607,7 @@ h1 {
   .mobile-header { display: flex; }
   .main-wrap { margin-left: 0; padding-top: calc(56px + 32px); }
   .ticker-bar { left: 0; top: 56px; }
-  .ticker-inner { animation-duration: 45s; animation-delay: 0s; }
+  .ticker-inner { animation-duration: 40s; animation-delay: 0s; }
   .hero { padding: 0 1.5rem 2rem; }
   .section { padding: 4rem 1.5rem; }
   .footer { padding: 2.5rem 1.5rem 1.5rem; }
