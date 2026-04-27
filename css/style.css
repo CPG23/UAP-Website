@@ -339,7 +339,7 @@ h1 {
 .ticker-inner {
   display: flex;
   white-space: nowrap;
-  animation: ticker 25s linear infinite;
+  animation: ticker 40s linear infinite;
   font-family: var(--fw);
   font-size: 0.62rem;
   letter-spacing: 1px;
@@ -603,7 +603,7 @@ h1 {
   .mobile-header { display: flex; }
   .main-wrap { margin-left: 0; padding-top: calc(56px + 32px); }
   .ticker-bar { left: 0; top: 56px; }
-  .ticker-inner { animation-duration: 20s; animation-delay: 0s; }
+  .ticker-inner { animation-duration: 30s; animation-delay: 0s; }
   .hero { padding: 0 1.5rem 2rem; }
   .section { padding: 4rem 1.5rem; }
   .footer { padding: 2.5rem 1.5rem 1.5rem; }
